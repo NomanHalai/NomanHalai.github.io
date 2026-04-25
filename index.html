@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noman Halai — .NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0f1a;
+    --bg2: #111627;
+    --bg3: #1a2035;
+    --accent: #4f8ef7;
+    --accent2: #7dd3fc;
+    --accent-glow: rgba(79, 142, 247, 0.15);
+    --text: #e8edf5;
+    --text-muted: #7a8ba8;
+    --text-dim: #4a5a72;
+    --border: rgba(79, 142, 247, 0.15);
+    --border2: rgba(255,255,255,0.06);
+    --green: #34d399;
+    --amber: #fbbf24;
+    --coral: #f87171;
+    --purple: #a78bfa;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(12,15,26,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border2);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent2); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
+    top: 50%; left: 60%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 800px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent2);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name .accent { color: var(--accent); }
+  .hero-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .hero-title span { color: var(--accent2); }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent2); color: var(--bg); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--border2);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg2);
+  }
+  .stat-item {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    border-right: 1px solid var(--border2);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* SECTION */
+  section { padding: 6rem 3rem; }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+  .section-title .accent { color: var(--accent); }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 16px 16px 0 0;
+    transition: opacity 0.3s;
+  }
+  .skill-card.blue::before { background: var(--accent); }
+  .skill-card.green::before { background: var(--green); }
+  .skill-card.purple::before { background: var(--purple); }
+  .skill-card.amber::before { background: var(--amber); }
+  .skill-card.coral::before { background: var(--coral); }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .skill-card-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+    display: block;
+  }
+  .skill-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.2);
+    color: var(--accent2);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+  .tag.green { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.2); color: var(--green); }
+  .tag.purple { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.2); color: var(--purple); }
+  .tag.amber { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.2); color: var(--amber); }
+  .tag.coral { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.2); color: var(--coral); }
+
+  /* EXPERIENCE */
+  .experience-timeline { position: relative; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  .exp-item::after {
+    content: '';
+    position: absolute;
+    left: 200px;
+    top: 0; bottom: -4rem;
+    width: 1px;
+    background: var(--border2);
+  }
+  .exp-item:last-child::after { display: none; }
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 4px;
+    text-align: right;
+  }
+  .exp-dot {
+    position: absolute;
+    left: calc(200px - 5px);
+    top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    z-index: 1;
+  }
+  .exp-body { padding-left: 3rem; }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .exp-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card:hover {
+    border-color: var(--border);
+    transform: translateY(-4px);
+    background: var(--bg3);
+  }
+  .project-card-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--border2);
+    line-height: 1;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 1.5rem; right: 1.75rem;
+    transition: color 0.3s;
+  }
+  .project-card:hover .project-card-num { color: var(--border); }
+  .project-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    max-width: 200px;
+  }
+  .project-role {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  #contact {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-orb {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .contact-content { position: relative; max-width: 600px; margin: 0 auto; }
+  .contact-email {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    display: inline-block;
+    margin: 1rem 0 2rem;
+    transition: color 0.2s;
+  }
+  .contact-email:hover { color: var(--accent); }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border2);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-item::after { display: none; }
+    .exp-dot { display: none; }
+    .exp-body { padding-left: 0; }
+    .exp-date { text-align: left; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border2); min-width: 50%; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NH_</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for opportunities</div>
+    <h1 class="hero-name">Noman<br><span class="accent">Halai.</span></h1>
+    <p class="hero-title"><span>.NET Developer</span> · Full-Stack · Ahmedabad, IN</p>
+    <p class="hero-desc">4 years of hands-on experience designing and shipping scalable web, mobile, and enterprise applications. Specializing in .NET Core, Angular, and Flutter with a focus on clean architecture and real-world impact.</p>
+    <div class="hero-ctas">
+      <a href="mailto:nomanhalai123@gmail.com" class="btn-primary">Get in touch →</a>
+      <a href="https://www.linkedin.com/in/noman-halai-311399195" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">4+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Projects Shipped</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Companies</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">8.14</div>
+    <div class="stat-label">GPA — BCA</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-tag">// what I work with</span>
+  <h2 class="section-title">Skills & <span class="accent">Tech Stack</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card blue">
+      <span class="skill-card-icon">⚙️</span>
+      <div class="skill-card-title">.NET Ecosystem</div>
+      <div class="skill-tags">
+        <span class="tag">.NET Core</span>
+        <span class="tag">ASP.NET MVC</span>
+        <span class="tag">Web API</span>
+        <span class="tag">C#</span>
+      </div>
+    </div>
+    <div class="skill-card green">
+      <span class="skill-card-icon">🌐</span>
+      <div class="skill-card-title">Front-End</div>
+      <div class="skill-tags">
+        <span class="tag green">Angular</span>
+        <span class="tag green">JavaScript</span>
+        <span class="tag green">HTML/CSS</span>
+        <span class="tag green">jQuery</span>
+        <span class="tag green">Bootstrap</span>
+      </div>
+    </div>
+    <div class="skill-card purple">
+      <span class="skill-card-icon">📱</span>
+      <div class="skill-card-title">Mobile Development</div>
+      <div class="skill-tags">
+        <span class="tag purple">Flutter</span>
+        <span class="tag purple">Cross-Platform</span>
+      </div>
+    </div>
+    <div class="skill-card amber">
+      <span class="skill-card-icon">🗄️</span>
+      <div class="skill-card-title">Database & ORM</div>
+      <div class="skill-tags">
+        <span class="tag amber">MS SQL Server</span>
+        <span class="tag amber">T-SQL</span>
+        <span class="tag amber">Entity Framework</span>
+        <span class="tag amber">Dapper</span>
+      </div>
+    </div>
+    <div class="skill-card coral">
+      <span class="skill-card-icon">🏗️</span>
+      <div class="skill-card-title">Architecture & Tools</div>
+      <div class="skill-tags">
+        <span class="tag coral">RESTful API</span>
+        <span class="tag coral">MVC</span>
+        <span class="tag coral">Git / GitLab</span>
+        <span class="tag coral">JIRA</span>
+        <span class="tag coral">Agile</span>
+      </div>
+    </div>
+    <div class="skill-card blue">
+      <span class="skill-card-icon">🤝</span>
+      <div class="skill-card-title">Soft Skills</div>
+      <div class="skill-tags">
+        <span class="tag">Requirement Analysis</span>
+        <span class="tag">Team Collaboration</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Time Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-tag">// where I've worked</span>
+  <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+  <div class="experience-timeline">
+    <div class="exp-item">
+      <div class="exp-date">Oct 2022 — Present</div>
+      <div class="exp-dot"></div>
+      <div class="exp-body">
+        <div class="exp-role">Sr. .NET Developer</div>
+        <div class="exp-company">Ocius Technologies</div>
+        <p class="exp-desc">Working on full-stack development of web and mobile applications using .NET technologies. Responsible for designing APIs, database logic, and front-end integration across multiple high-impact projects including multi-platform visitor management systems and enterprise-level CRM tools.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">May 2021 — Oct 2022</div>
+      <div class="exp-dot" style="background:var(--purple); box-shadow: 0 0 12px var(--purple);"></div>
+      <div class="exp-body">
+        <div class="exp-role">.NET Developer</div>
+        <div class="exp-company">4Sight Technosoft</div>
+        <p class="exp-desc">Developed and maintained enterprise and e-commerce applications across the full stack. Involved in end-to-end project execution including coding, testing, and deployment. Built training portals and company management tools with payroll and attendance modules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="section-tag">// things I've built</span>
+  <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-card-num">01</div>
+      <div class="project-period">Feb 2025 — Present</div>
+      <div class="project-name">Visitor Management System</div>
+      <div class="project-role">Full-Stack Developer</div>
+      <p class="project-desc">Multi-platform visitor & society management system with gate pass generation, resident alerts, check-in/out tracking, and staff monitoring. Built with .NET Web API, Flutter, and Angular.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-card-num">02</div>
+      <div class="project-period">Oct 2022 — Present</div>
+      <div class="project-name">MarketSync</div>
+      <div class="project-role">Full-Stack Developer</div>
+      <p class="project-desc">Enterprise-level toolset for managing email campaigns, print mailings, and event workflows. Integrated with Salesforce via secure .NET APIs with scalable modules for large client needs.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-card-num">03</div>
+      <div class="project-period">Apr 2022 — Oct 2022</div>
+      <div class="project-name">Allure Products</div>
+      <div class="project-role">Full-Stack Developer</div>
+      <p class="project-desc">B2C e-commerce platform with product listing, shopping cart, order processing, and payment integration. Handled complete front-end and back-end development alongside database design.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-card-num">04</div>
+      <div class="project-period">Jan 2022 — Sep 2022</div>
+      <div class="project-name">DriveThru System</div>
+      <div class="project-role">Full-Stack Developer</div>
+      <p class="project-desc">Training portal for finance and insurance brokers with user registration, content modules, and access control. Delivered a cost-effective platform with scalability for license tracking.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-card-num">05</div>
+      <div class="project-period">May 2021 — Jun 2022</div>
+      <div class="project-name">Company Workdays System</div>
+      <div class="project-role">Full-Stack Developer</div>
+      <p class="project-desc">Comprehensive company management tool with attendance, payroll, project tracking, and event management modules. Streamlined internal operations through custom dashboards and reporting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-orb"></div>
+  <div class="contact-content">
+    <span class="section-tag">// let's connect</span>
+    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 300;">I'm always open to interesting opportunities, collaborations, and conversations. Drop me a message!</p>
+    <a href="mailto:nomanhalai123@gmail.com" class="contact-email">nomanhalai123@gmail.com</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/noman-halai-311399195" target="_blank" class="btn-primary">LinkedIn ↗</a>
+      <a href="tel:+919510888192" class="btn-outline">+91 9510888192</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">NH_</div>
+  <div class="footer-copy">© 2026 Noman Halai · Ahmedabad, Gujarat</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+{
+  "name": "Noman Halai",
+  "title": ".NET Developer",
+  "subtitle": "Full-Stack · Ahmedabad, IN",
+  "email": "nomanhalai123@gmail.com",
+  "phone": "+919510888192",
+  "linkedin": "https://www.linkedin.com/in/noman-halai-311399195",
+  "location": "Ahmedabad, Gujarat",
+  "available": true,
+  "about": "4 years of hands-on experience designing and shipping scalable web, mobile, and enterprise applications. Specializing in .NET Core, Flutter, and SQL with a focus on clean architecture and real-world impact.",
+  "stats": [
+    { "num": "4+", "label": "Years Experience" },
+    { "num": "5",  "label": "Projects Shipped" },
+    { "num": "2",  "label": "Companies" },
+    { "num": "8.14", "label": "GPA — BCA" }
+  ],
+  "skills": [
+    {
+      "icon": "⚙️",
+      "title": ".NET Ecosystem",
+      "color": "blue",
+      "tags": [".NET Core", "ASP.NET MVC", "Web API", "C#"]
+    },
+    {
+      "icon": "🌐",
+      "title": "Front-End",
+      "color": "green",
+      "tags": ["JavaScript", "HTML/CSS", "jQuery", "Bootstrap"]
+    },
+    {
+      "icon": "📱",
+      "title": "Mobile Development",
+      "color": "purple",
+      "tags": ["Flutter", "Cross-Platform"]
+    },
+    {
+      "icon": "🗄️",
+      "title": "Database & ORM",
+      "color": "amber",
+      "tags": ["MS SQL Server", "T-SQL", "Entity Framework", "Dapper"]
+    },
+    {
+      "icon": "🏗️",
+      "title": "Architecture & Tools",
+      "color": "coral",
+      "tags": ["RESTful API", "MVC", "Git / GitLab", "JIRA", "Agile"]
+    },
+    {
+      "icon": "🤝",
+      "title": "Soft Skills",
+      "color": "blue",
+      "tags": ["Requirement Analysis", "Team Collaboration", "Problem Solving", "Time Management"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Sr. .NET Developer",
+      "company": "Ocius Technologies",
+      "period": "Oct 2022 — Present",
+      "color": "blue",
+      "desc": "Working on full-stack development of web and mobile applications using .NET technologies. Responsible for designing APIs, database logic, and front-end integration across multiple high-impact projects including multi-platform visitor management systems and enterprise-level CRM tools."
+    },
+    {
+      "role": ".NET Developer",
+      "company": "4Sight Technosoft",
+      "period": "May 2021 — Oct 2022",
+      "color": "purple",
+      "desc": "Developed and maintained enterprise and e-commerce applications across the full stack. Involved in end-to-end project execution including coding, testing, and deployment. Built training portals and company management tools with payroll and attendance modules."
+    }
+  ],
+  "projects": [
+    {
+      "num": "01",
+      "period": "Feb 2025 — Present",
+      "name": "Visitor Management System",
+      "role": "Full-Stack Developer",
+      "desc": "Multi-platform visitor & society management system with gate pass generation, resident alerts, check-in/out tracking, and staff monitoring. Built with .NET Web API and Flutter."
+    },
+    {
+      "num": "02",
+      "period": "Oct 2022 — Present",
+      "name": "MarketSync",
+      "role": "Full-Stack Developer",
+      "desc": "Enterprise-level toolset for managing email campaigns, print mailings, and event workflows. Integrated with Salesforce via secure .NET APIs with scalable modules for large client needs."
+    },
+    {
+      "num": "03",
+      "period": "Apr 2022 — Oct 2022",
+      "name": "Allure Products",
+      "role": "Full-Stack Developer",
+      "desc": "B2C e-commerce platform with product listing, shopping cart, order processing, and payment integration. Handled complete front-end and back-end development alongside database design."
+    },
+    {
+      "num": "04",
+      "period": "Jan 2022 — Sep 2022",
+      "name": "DriveThru System",
+      "role": "Full-Stack Developer",
+      "desc": "Training portal for finance and insurance brokers with user registration, content modules, and access control. Delivered a cost-effective platform with scalability for license tracking."
+    },
+    {
+      "num": "05",
+      "period": "May 2021 — Jun 2022",
+      "name": "Company Workdays System",
+      "role": "Full-Stack Developer",
+      "desc": "Comprehensive company management tool with attendance, payroll, project tracking, and event management modules. Streamlined internal operations through custom dashboards and reporting."
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Computer Application (BCA)",
+    "university": "Bhakta Kavi Narsinh Mehta University",
+    "gpa": "8.14",
+    "year": "Apr 2022"
+  }
+}

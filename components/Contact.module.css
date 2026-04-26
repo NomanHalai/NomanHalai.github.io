@@ -1,0 +1,53 @@
+.section {
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.email {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: var(--accent2);
+  text-decoration: none;
+  display: inline-block;
+  margin: 1rem 0 2rem;
+  transition: color 0.2s;
+}
+
+.email:hover { color: var(--accent); }
+
+.links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .section { padding: 4rem 1.5rem; }
+}

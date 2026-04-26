@@ -103,7 +103,14 @@
       "name": "Company Workdays System",
       "role": "Full-Stack Developer",
       "desc": "Comprehensive company management tool with attendance, payroll, project tracking, and event management modules. Streamlined internal operations through custom dashboards and reporting."
-    }
+    },
+    {
+      "num": "06",
+      "period": "Jan 2026 — Mar 2026",
+      "name": "Gati — Fleet Management",
+      "role": "Full-Stack Developer",
+      "desc": "A logistics and fleet management mobile app built with Flutter. Features dedicated UI for Admin Panel to manage Yard Supervisors and Port In-charges, enabling streamlined operations across the supply chain."
+  }
   ],
   "education": {
     "degree": "Bachelor of Computer Application (BCA)",

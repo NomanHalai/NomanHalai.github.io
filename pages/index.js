@@ -27,6 +27,7 @@ export default function Home() {
         <link rel="canonical" href="https://noman-halai.web.app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+  <meta name="google-site-verification" content="BGIWdPCDvn9y_fTqJFmvWDT912mb-_AsbKxy1-ClCE4" />
       </Head>
 
       <Navbar />

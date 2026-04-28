@@ -22,9 +22,9 @@ export default function Home() {
         <meta property="og:title" content={`${data.name} — ${data.title}`} />
         <meta property="og:description" content={data.about} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://YOUR-PROJECT-ID.web.app" />
-
-        <link rel="canonical" href="https://YOUR-PROJECT-ID.web.app" />
+       <meta property="og:url" content="https://noman-halai.web.app" />
+  
+        <link rel="canonical" href="https://noman-halai.web.app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

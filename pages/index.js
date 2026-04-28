@@ -15,6 +15,16 @@ export default function Home() {
       <Head>
         <title>{data.name} — {data.title}</title>
         <meta name="description" content={data.about} />
+        <meta name="keywords" content="Noman Halai, .NET Developer, Ahmedabad, C#, Flutter, ASP.NET, Full Stack Developer" />
+        <meta name="author" content="Noman Halai" />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:title" content={`${data.name} — ${data.title}`} />
+        <meta property="og:description" content={data.about} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://YOUR-PROJECT-ID.web.app" />
+
+        <link rel="canonical" href="https://YOUR-PROJECT-ID.web.app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

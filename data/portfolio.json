@@ -71,7 +71,7 @@
   "projects": [
     {
       "num": "01",
-      "period": "Feb 2025 — Present",
+      "period": "Feb 2025 — Aug 2025",
       "name": "Visitor Management System",
       "role": "Full-Stack Developer",
       "desc": "Multi-platform visitor & society management system with gate pass generation, resident alerts, check-in/out tracking, and staff monitoring. Built with .NET Web API and Flutter."
